@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,200;1,100;1,200&family=Poiret+One&family=Raleway:wght@800&display=swap"
+        rel="stylesheet">
+    <!-- <script type="text/javascript" src="../../../dist/main.js"></script>
+    <link rel="stylesheet" href="/styles/styles.css"> -->
+    <title>Travel App</title>
+</head>
+
+
+<body>
+    <div id="app">
+        <div class="holder headline">
+            Travel Planner
+        </div>
+        <form id="container">
+            <div class="date-picker">
+                <label for="tripStartDate">Trip Start Date:</label>
+                <input type="date" class="inputDate" id="tripStartDate" required>
+
+                <label for="tripEndDate">Trip End Date:</label>
+                <input type="date" class="inputDate" id="tripEndDate" required>
+            </div>
+            <div id="location">
+                <!-- <label for="city">Location</label> -->
+                <!-- <img src="/src/client/asset/search.svg" class="icon" alt="search icon"> -->
+                <input type="text" id="tripCity" placeholder="Where do you wanna go? ">
+                <button id="button" type="submit">Search</button>
+            </div>
+
+
+
+            <div class="holder entry hidden">
+                <div class="title">Your trip to:</div>
+                <div id="entryHolder">
+                    <img id="image" src="" alt="City Image">
+                    <div id="city"></div>
+                    <div id="country"></div>
+                    <div id="temperature"></div>
+                    <div id="forecast"></div>
+                    <div id="date"></div>
+                    <div id="population"></div>
+                    <div id="daysRemaining"></div>
+                    <div id="tripLength"></div>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</body>
+
+</html>
