@@ -27,13 +27,13 @@ console.log(__dirname);
 
 
 // Redirect HTTP to HTTPS
-app.all('*', (req, res, next) => {
-	if (req.protocol === 'http') {
-	  res.redirect(301, `https://${req.headers.host}${req.url}`);
-	} else {
-	  next();
-	}
-  });
+// app.all('*', (req, res, next) => {
+// 	if (req.protocol === 'http') {
+// 	  res.redirect(301, `https://${req.headers.host}${req.url}`);
+// 	} else {
+// 	  next();
+// 	}
+//   });
 
 // Port setup
 const port = 5000;
