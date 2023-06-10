@@ -18,7 +18,7 @@ let projectData = {};
 
 // Personal API Keys and URLs
 const geoNamesAPIKey = 'shakerbillo';
-const geoNamesBaseURL = 'https://api.geonames.org/searchJSON?q=';
+const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 
 const weatherbitAPIKey = 'dd04be98839e4f02adfe0f676d05eec4';
 const weatherbitBaseURL = 'https://api.weatherbit.io/v2.0/current?';
@@ -26,6 +26,7 @@ const weatherbitForecastURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 
 const pixabayAPIKey = '36598325-df35a1656442b769744f4cf3e';
 const pixabayBaseURL = 'https://pixabay.com/api/?';
+
 
 // Function to handle button click event
 const handleClick = async (e) => {
