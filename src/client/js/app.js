@@ -18,7 +18,7 @@ let projectData = {};
 
 // Personal API Keys and URLs
 const geoNamesAPIKey = 'shakerbillo';
-const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
+const geoNamesBaseURL = 'https://api.geonames.org/searchJSON?q=';
 
 const weatherbitAPIKey = 'dd04be98839e4f02adfe0f676d05eec4';
 const weatherbitBaseURL = 'https://api.weatherbit.io/v2.0/current?';

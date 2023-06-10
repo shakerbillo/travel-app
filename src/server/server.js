@@ -25,6 +25,14 @@ app.use(cors());
 app.use(express.static('dist'));
 console.log(__dirname);
 
+
+// Redirect HTTP to HTTPS
+app.use((req, res) => {
+	if(req.protocol === 'http'){
+		res.redirect(301, `https://${req.headers.host}${req.url}`);
+	}
+})
+
 // Port setup
 const port = 5000;
 // Spin up the server
