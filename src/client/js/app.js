@@ -73,10 +73,10 @@ const handleClick = async (e) => {
 		};
 
 		// Call the POST functions to send the data to the server
-		postGeoNames('http://localhost:5000/api', geoInfo);
-		postWeatherbit('http://localhost:5000/api', weatherInfo);
-		postForecast('http://localhost:5000/api', forecastInfo);
-		postImage('http://localhost:5000/api', imageInfo);
+		postGeoNames('/api', geoInfo);
+		postWeatherbit('/api', weatherInfo);
+		postForecast('/api', forecastInfo);
+		postImage('/api', imageInfo);
 
 		// Call the countdown function
 		countdown();
