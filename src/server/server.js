@@ -1,6 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
 let projectData = {};
-
 // Express to run server and routes
 const express = require('express');
 const cors = require('cors');
@@ -38,8 +37,8 @@ const server = app.listen(port, listening);
 
 // Initiate GET route
 const fileSend = (req, res) => {
-	// res.sendFile(path.resolve('dist/index.html'));
-	res.sendFile('dist/index.html');
+	res.sendFile(path.resolve('dist/index.html'));
+	// res.sendFile('dist/index.html');
 };
 app.get('/', fileSend);
 
