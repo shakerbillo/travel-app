@@ -14,6 +14,7 @@ A custom travel app which allows user to input depature and returning dates with
 6. Built App Using 
 7. How to run 
 8. APIs
+9. Changes 
 
 
 #Project Prerequisites
@@ -21,7 +22,7 @@ A custom travel app which allows user to input depature and returning dates with
 2. Web application framework for routing - Express
 3. Build tool - Webpack. Using webpack, we will set up the app to have dev and prod environments, each with their own set of tools and commands.
 4. External script - Service Worker
-5. External API - MeaningCloud API
+5. External API 
 6. Jest
 7. HTML/CSS
 
@@ -56,9 +57,11 @@ A custom travel app which allows user to input depature and returning dates with
 
 # APIs used 
 1. Pixabay
-2. Geonames
+2. Geonames / openCage
 3. weatherbit
 
+# Changes 
+Changed geoNames api to openCage HTTP to HTTPS redirecting issue with Render hosting services
 #  How to run 
 On the terminal, navigate to right directory and install node modules and  dependencies with "npm i or npm install" 
 After run to run on the development run 'npm run build-prod' to create dist file and or to run on the development use run 'npm run build-dev' or then run 'npm run start' to stat application on the designated port, enter input dates and destination and resulted will be printed in the UI.

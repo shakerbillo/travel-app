@@ -17,8 +17,8 @@ const holderEntry = document.querySelector('.holder.entry');
 let projectData = {};
 
 // Personal API Keys and URLs
-const geoNamesAPIKey = 'shakerbillo';
-const geoNamesBaseURL = 'https://crossorigin.me/http://api.geonames.org/searchJSON?q=';
+const openCageURL = 'https://api.opencagedata.com/geocode/v1/json?q=' 
+const openCageKey = '8bc6d4b7c4f54a369d38b9ec26d14d82'
 
 const weatherbitAPIKey = 'dd04be98839e4f02adfe0f676d05eec4';
 const weatherbitBaseURL = 'https://api.weatherbit.io/v2.0/current?';
@@ -27,20 +27,21 @@ const weatherbitForecastURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 const pixabayAPIKey = '36598325-df35a1656442b769744f4cf3e';
 const pixabayBaseURL = 'https://pixabay.com/api/?';
 
-
 // Function to handle button click event
 const handleClick = async (e) => {
 	e.preventDefault();
 	try {
 		// Call the GET functions to fetch data from APIs
 		const selectedCity = tripCity.value;
-		const geoNamesData = await getGeoNames(selectedCity);
+		const getOpenCageData = await getOpenCage(selectedCity);
+		console.log(getOpenCageData)
 
 		const geoInfo = {
-			population: geoNamesData.geonames[0].population,
-			city: geoNamesData.geonames[0].name,
-			country: geoNamesData.geonames[0].countryName,
+			continent: getOpenCageData.results[0].components.continent,
+			city: getOpenCageData.results[0].components.city,
+			country: getOpenCageData.results[0].components.country,
 		};
+		console.log(geoInfo)
 
 		const weatherData = await getWeatherbit(selectedCity);
 
@@ -72,10 +73,10 @@ const handleClick = async (e) => {
 		};
 
 		// Call the POST functions to send the data to the server
-		postGeoNames('/api', geoInfo);
-		postWeatherbit('/api', weatherInfo);
-		postForecast('/api', forecastInfo);
-		postImage('/api', imageInfo);
+		postGeoNames('http://localhost:5000/api', geoInfo);
+		postWeatherbit('http://localhost:5000/api', weatherInfo);
+		postForecast('http://localhost:5000/api', forecastInfo);
+		postImage('http://localhost:5000/api', imageInfo);
 
 		// Call the countdown function
 		countdown();
@@ -94,19 +95,19 @@ const handleClick = async (e) => {
 };
 
 // Function to get city data from GeoNames API
-const getGeoNames = async (city) => {
+const getOpenCage = async (city) => {
 	try {
 		const res = await fetch(
-			`${geoNamesBaseURL}${city}&maxRows=1&username=${geoNamesAPIKey}`
+			`${openCageURL}${encodeURIComponent(city)}&key=${openCageKey}`
 		);
 		const data = await res.json();
-		if (!data || !data.data || data.data.length === 0) {
+		if (!data || !data.results || data.results.length === 0) {
 			throw new Error('Invalid API response');
 		}
 
 		return data;
 	} catch (err) {
-		console.error('Error in getGeoNames:', err); // Display an error message if there's an error
+		console.error('Error in getOpenCage:', err); // Display an error message if there's an error
 		// appropriately handle the error
 	}
 };
@@ -153,7 +154,7 @@ const getImage = async (city) => {
 			`${pixabayBaseURL}key=${pixabayAPIKey}&q=${city}&image_type=photo`
 		);
 		const data = await res.json();
-		if (!data || !data.data || data.data.length === 0) {
+		if (!data || !data.hits || data.hits.length === 0) {
 			throw new Error('Invalid API response');
 		}
 		return data;
@@ -292,7 +293,7 @@ const updateUI = () => {
 	date.innerHTML = `Date from ${projectData.startDate} to ${projectData.endDate}`;
 	city.innerHTML = `City: ${projectData.city}`;
 	country.innerHTML = `Country: ${projectData.country}`;
-	population.innerHTML = `Population: ${projectData.population}`;
+	continent.innerHTML = `Continent: ${projectData.continent}`;
 	temperature.innerHTML = `Temperature: ${projectData.temperature} degrees Celsius`;
 	forecast.innerHTML = `Forecast: ${projectData.forecast}`;
 	duration.innerHTML = `Your trip will last ${projectData.tripLength} days.`;
