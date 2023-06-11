@@ -20,7 +20,7 @@ let projectData = {};
 const openCageURL = 'https://api.opencagedata.com/geocode/v1/json?q=' 
 const openCageKey = '8bc6d4b7c4f54a369d38b9ec26d14d82'
 
-const weatherbitAPIKey = 'dd04be98839e4f02adfe0f676d05eec4';
+const weatherbitAPIKey = 'dc204222ea514b59aae42ae49af8ec97';
 const weatherbitBaseURL = 'https://api.weatherbit.io/v2.0/current?';
 const weatherbitForecastURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 
